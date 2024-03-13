@@ -13,38 +13,40 @@ class PokemonDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchDetail(url: pokemonDetail?.url ?? "") { detail in
-            if let url = detail?.sprites?.front_default {
-                self.fetchData(url: url) { data in
-                    if let data = data {
-                        let image = UIImage(data: data)
-                        DispatchQueue.main.async {
-                            self.imageView?.image = image
-                        }
-                    }
-                }
+        Task {
+            guard let detail = await fetchPokemonDetail(url: pokemonDetail?.url ?? "") else {
+                return
+            }
+            let image = await fetchPokemonImage(url: detail.sprites?.front_default ?? "")
+            await MainActor.run {
+                self.imageView?.image = image
             }
         }
     }
     
-    func fetchData(url: String, completion: @escaping ((Data?) -> Void)) {
-        if let url = URL(string: url) {
-            URLSession.shared.dataTask(with: url) { data, _, _ in
-                completion(data)
-            }.resume()
+    func fetchPokemonImage(url: String) async -> UIImage? {
+        guard let url = URL(string: url) else {
+            return nil
+        }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let image = UIImage(data: data)
+            return image
+        } catch {
+            return nil
         }
     }
     
-    func fetchDetail(url: String, completion: @escaping ((PokemonDetail?) -> Void)) {
-        if let url = URL(string: url) {
-            URLSession.shared.dataTask(with: url) { data, _, _ in
-                if let data = data,
-                   let data = try? JSONDecoder().decode(PokemonDetail.self, from: data) {
-                    completion(data)
-                } else {
-                    completion(nil)
-                }
-            }.resume()
+    func fetchPokemonDetail(url: String) async -> PokemonDetail? {
+        guard let url = URL(string: url) else {
+            return nil
+        }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let detail = try JSONDecoder().decode(PokemonDetail.self, from: data)
+            return detail
+        } catch {
+            return nil
         }
     }
 }

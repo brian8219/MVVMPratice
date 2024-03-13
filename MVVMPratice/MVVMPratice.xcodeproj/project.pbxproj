@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D32680642BA13F0400243FC0 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32680632BA13F0400243FC0 /* Error.swift */; };
 		D32BDF912BA006F1008E7E8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BDF902BA006F1008E7E8E /* AppDelegate.swift */; };
 		D32BDF932BA006F1008E7E8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BDF922BA006F1008E7E8E /* SceneDelegate.swift */; };
 		D32BDF952BA006F1008E7E8E /* PokemonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32BDF942BA006F1008E7E8E /* PokemonListViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D32680632BA13F0400243FC0 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		D32BDF8D2BA006F1008E7E8E /* MVVMPratice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMPratice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D32BDF902BA006F1008E7E8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D32BDF922BA006F1008E7E8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 		D32BDF842BA006F1008E7E8E = {
 			isa = PBXGroup;
 			children = (
+				D32680632BA13F0400243FC0 /* Error.swift */,
 				D32BDF8F2BA006F1008E7E8E /* MVVMPratice */,
 				D32BDFA62BA006F2008E7E8E /* MVVMPraticeTests */,
 				D32BDFB02BA006F2008E7E8E /* MVVMPraticeUITests */,
@@ -280,6 +283,7 @@
 				D32BDF912BA006F1008E7E8E /* AppDelegate.swift in Sources */,
 				D32BDFC62BA02BCA008E7E8E /* PokemonDetailViewController.swift in Sources */,
 				D32BDF932BA006F1008E7E8E /* SceneDelegate.swift in Sources */,
+				D32680642BA13F0400243FC0 /* Error.swift in Sources */,
 				D32BDFC32BA0119D008E7E8E /* PokemonModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
